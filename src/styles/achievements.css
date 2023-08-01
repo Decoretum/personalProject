@@ -1,0 +1,15 @@
+.achievement {
+  margin: auto;
+  margin-top: 5vh;
+  max-width: 100%;
+  width: 50%;
+  padding: 10px;
+  border-radius: 9px;
+  font-family: Roboto;
+  background-color: lightslategray;
+}
+
+.background {
+  background-color: rgb(171, 149, 142);
+  padding: 15px;
+}
