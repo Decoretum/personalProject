@@ -1,5 +1,6 @@
 import {
   Avatar,
+  Button,
   Container,
   Divider,
   Grid,
@@ -12,6 +13,7 @@ import Link from "next/link";
 import { UseQueryResult, useQuery } from "@tanstack/react-query";
 import { Card } from "@/components/achievements/card";
 import "@/styles/achievements.css";
+import AddCircleIcon from '@mui/icons-material/AddCircle';
 
 export default function Achievements() {
   type format = {
@@ -40,13 +42,18 @@ export default function Achievements() {
 
   return (
     <Container className="background">
-      <Grid container style={{ fontFamily: "Roboto" }}>
+      <Grid container>
         <Grid item>
-          <h1 style={{ fontSize: "15px" }}> Gael's Achievements </h1>
+          <h1> Gael's Achievements </h1>
         </Grid>
-        <Grid item style={{ marginLeft: "68vw" }}>
+        <Grid item style={{marginLeft: '2vw', alignItems: 'center'}}>
+          <Link href='/Achievements/create'>
+            <AddCircleIcon style={{marginTop: '1vh'}} />
+          </Link>
+        </Grid>
+        <Grid item style={{ marginLeft: "55vw" }}>
           <Link href={"/Intro"}>
-            <h1 style={{ fontSize: "15px" }}> Back to Home </h1>
+            <Button variant='contained' color="success"> Back </Button>
           </Link>
         </Grid>
       </Grid>
@@ -54,14 +61,15 @@ export default function Achievements() {
       <Container
         style={{
           marginTop: "5vh",
-          width: "80%",
+          width: "50%",
           borderRadius: "9px",
-          boxShadow: "9px 9px",
+          boxShadow: "0 0 10px #ccc",
           backgroundColor: "ThreeDDarkShadow",
           padding: "10px",
         }}
       >
         <Card props={achievements} />
+        <br/>
       </Container>
       <br />
     </Container>

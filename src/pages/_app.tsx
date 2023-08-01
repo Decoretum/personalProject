@@ -19,7 +19,7 @@ export default function MyApp({ Component, pageProps }) {
 
   return (
     <QueryClientProvider client={client}>
-      <div style={{ marginTop: "15vh", maxHeight: "400vh", fontFamily: 'Roboto' }}>
+      <div style={{ marginTop: "15vh", maxHeight: "100%", maxWidth: '100%', fontFamily: 'Roboto' }}>
         <mui.Box>
           <mui.AppBar style={{backgroundColor: '#1565c0'}}>
             <mui.Toolbar>

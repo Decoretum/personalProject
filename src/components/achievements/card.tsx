@@ -9,6 +9,7 @@ import {
   ListItemText,
 } from "@mui/material";
 import "@/styles/achievements.css";
+import DeveloperBoardIcon from '@mui/icons-material/DeveloperBoard';
 
 export function Card({ props }: any) {
   return (
@@ -16,7 +17,15 @@ export function Card({ props }: any) {
       {props?.data?.map((element: any) => {
         return (
           <Box key={element.id} className="achievement">
-            <h4> {element.title} </h4>
+            <Grid container>
+              <Grid item>
+                <DeveloperBoardIcon />
+              </Grid>
+              <Grid item style={{marginLeft: '2vw'}}>
+                <h4> {element.title} </h4>
+              </Grid>
+            </Grid>
+            
             <p style={{ marginTop: "2vh" }}>
               <i>Description</i>
             </p>

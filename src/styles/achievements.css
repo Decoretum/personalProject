@@ -6,10 +6,9 @@
   padding: 10px;
   border-radius: 9px;
   font-family: Roboto;
-  background-color: lightslategray;
+  background-color: rgb(202, 212, 223);
 }
 
 .background {
-  background-color: rgb(171, 149, 142);
   padding: 15px;
 }
