@@ -8,6 +8,9 @@ import {
   ListItemText,
 } from "@mui/material";
 import { deepOrange } from "@mui/material/colors";
+import CakeIcon from '@mui/icons-material/Cake';
+import ViewInArIcon from '@mui/icons-material/ViewInAr';
+import SchoolIcon from '@mui/icons-material/School';
 import Link from "next/link";
 
 export default function Intro() {
@@ -16,7 +19,7 @@ export default function Intro() {
       style={{ backgroundColor: "linen", padding: "15px", borderRadius: "9px", maxWidth: '100vw' }}
     >
       <Container>
-        <h1 style={{ fontFamily: "Roboto" }}> Introduction Page </h1>
+        <h1 style={{ fontFamily: "Roboto" }}> Overview </h1>
         <Avatar
           sx={{ bgcolor: deepOrange[500] }}
           style={{ display: "inline-flex", marginTop: "6vh " }}
@@ -29,26 +32,25 @@ export default function Intro() {
         </span>
       </Container>
 
-      <Grid container>
+      <Grid container style={{marginLeft: '3vw', marginTop: '2vh'}}>
         <Grid item>
           <List style={{ width: "30vw" }}>
-            <Link href="/About">
               <ListItem>
-                <ListItemText primary="About" />
+                <CakeIcon color='primary' />
+                <ListItemText style={{marginLeft: '2vw'}} primary="Date of Birth: 02/07/2003" />
               </ListItem>
               <Divider />
-            </Link>
 
             <ListItem>
-              <Link href="/Achievements">
-                <ListItemText primary="Achievements" />
-              </Link>
+                <ViewInArIcon color='primary' />
+                <ListItemText style={{marginLeft: '2vw'}} primary="Software Developer & Speedcuber" />
             </ListItem>
 
             <Divider />
             
             <ListItem>
-              <ListItemText primary="Skills" />
+              <SchoolIcon color='primary' />
+              <ListItemText style={{marginLeft: '2vw'}} primary="Ateneo de Manila University" />
             </ListItem>
             <Divider />
           </List>
@@ -68,7 +70,7 @@ export default function Intro() {
               Where does Gael Specialize in?{" "}
             </Divider>
             <ListItem>
-              Gael specializes in Software Development, specifically back-end.
+              Gael specializes in Software Development, specifically back-end
               development.
             </ListItem>
             <ListItem>
