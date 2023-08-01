@@ -17,7 +17,7 @@ export default function Create({props} : any){
         if (data.title === ''){
             setOpen(true);
             const a = (
-            <div style={{marginTop: '10vh'}}>
+            <div style={{marginTop: '1vh', position: 'fixed', }}>
                 <mui.Alert onClose={() => {setOpen(false)}} severity="error" variant='filled'> 
                     <mui.AlertTitle> Validation Error: </mui.AlertTitle>
                     Fill out the title! 
@@ -30,7 +30,7 @@ export default function Create({props} : any){
         } else if (data.Description === ''){
             setOpen(true);
             const a = (
-            <div style={{marginTop: '10vh'}}>
+            <div style={{marginTop: '1vh', position: 'fixed'}}>
                 <mui.Alert onClose={() => {setOpen(false)}} severity="error" variant='filled'> 
                     <mui.AlertTitle> Validation Error: </mui.AlertTitle>
                     Fill out the description! 

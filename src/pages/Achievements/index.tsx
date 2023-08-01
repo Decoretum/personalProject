@@ -31,12 +31,12 @@ export default function Achievements() {
   });
 
   if (achievements.isFetching) {
-    return <h1 style={{ fontFamily: "Roboto" }}> Fetching data from MySQL </h1>;
+    return <h1 style={{ marginLeft: '2vw' }}> Fetching data from MySQL </h1>;
   }
 
   if (achievements.isError) {
     return (
-      <h1 style={{ fontFamily: "Roboto" }}> Fetching MySQL data failed </h1>
+      <h1 style={{ marginLeft: '2vw' }}> Fetching MySQL data failed </h1>
     );
   }
 
@@ -64,7 +64,7 @@ export default function Achievements() {
           width: "50%",
           borderRadius: "9px",
           boxShadow: "0 0 10px #ccc",
-          backgroundColor: "ThreeDDarkShadow",
+          backgroundColor: 'beige',
           padding: "10px",
         }}
       >

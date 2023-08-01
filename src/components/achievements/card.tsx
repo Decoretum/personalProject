@@ -10,6 +10,7 @@ import {
 } from "@mui/material";
 import "@/styles/achievements.css";
 import DeveloperBoardIcon from '@mui/icons-material/DeveloperBoard';
+import Link from "next/link";
 
 export function Card({ props }: any) {
   return (
@@ -17,13 +18,13 @@ export function Card({ props }: any) {
       {props?.data?.map((element: any) => {
         return (
           <Box key={element.id} className="achievement">
-            <Grid container>
-              <Grid item>
-                <DeveloperBoardIcon />
-              </Grid>
-              <Grid item style={{marginLeft: '2vw'}}>
-                <h4> {element.title} </h4>
-              </Grid>
+            <Grid container >
+              <Link href={`Achievements/${element.id}/view`}>
+                <Grid item>
+                  <DeveloperBoardIcon style={{clear: 'none'}} />
+                  <h4 style={{clear: 'none'}}> {element.title} </h4>
+                </Grid>
+              </Link>
             </Grid>
             
             <p style={{ marginTop: "2vh" }}>
