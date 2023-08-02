@@ -7,6 +7,24 @@
   min-height: 100vh;
 }
 
+.bg{
+  background-image: url('../pics/bg.jpeg');
+  background-repeat: no-repeat;
+  padding: 15px;
+  min-height: 90vh;
+  width: 78vw;
+  margin:auto;
+  border-radius: 9px;
+  align-content: center;
+  box-shadow: 0 0 10px #000;
+}
+
+.b1{
+  color: black;
+  background: rgb(174,165,82);
+  background: linear-gradient(90deg, rgba(174,165,82,1) 36%, rgba(44,137,156,1) 81%);
+}
+
 .description {
   display: inherit;
   justify-content: inherit;

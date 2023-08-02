@@ -34,7 +34,7 @@ export default function MyApp({ Component, pageProps }) {
               </mui.IconButton>
 
               <mui.Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-                <Link href='/Intro'>
+                <Link href='/'>
                   Gael's Portfolio Site
                 </Link>
                 <mui.Button 
@@ -64,6 +64,14 @@ export default function MyApp({ Component, pageProps }) {
                 <mui.MenuItem>
                   <mui.Typography>
                     Achievements
+                  </mui.Typography>
+                  </mui.MenuItem>
+              </Link>
+
+              <Link href='/Intro'>
+                <mui.MenuItem>
+                  <mui.Typography>
+                    Overview
                   </mui.Typography>
                   </mui.MenuItem>
               </Link>
