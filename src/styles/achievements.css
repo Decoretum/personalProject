@@ -3,9 +3,11 @@
   margin-top: 5vh;
   max-width: 100%;
   width: 50%;
+  min-width: 50%;
   padding: 10px;
   border-radius: 9px;
   font-family: Roboto;
+  box-shadow: 0 0 10px rgba(42, 38, 38, 0.8);
   background-color: rgb(162, 203, 248);
 }
 

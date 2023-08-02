@@ -69,7 +69,6 @@ export default function MyApp({ Component, pageProps }) {
               </Link>
             </mui.Menu>
 
-              <mui.Button color="inherit">Login</mui.Button>
             </mui.Toolbar>
           </mui.AppBar>
         </mui.Box>
