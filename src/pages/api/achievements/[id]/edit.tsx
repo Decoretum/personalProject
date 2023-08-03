@@ -12,7 +12,7 @@ export default function Edit(req: any, res: any){
         WHERE id = ?
         `
         const value = [title, description, id]
-        connection.query(query, value, (err, result) => {
+        connection.query(query, value, (err : any, result : any) => {
             if (err) return console.error(err);
             return res.status(200).json({result})
         })

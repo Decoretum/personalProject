@@ -10,7 +10,7 @@ export default function view(req:any, res:any){
         const query1 = `SELECT * FROM Achievements 
         WHERE id = ?`
  
-        connection.query(query1, value, (err, result) => {
+        connection.query(query1, value, (err : any, result : any) => {
             if (err) return console.error(err);
             return res.status(200).json({result : result})
         })

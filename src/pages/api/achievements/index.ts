@@ -13,7 +13,7 @@ export default function achievements(req: any, res: any) {
       `INSERT INTO Achievements(title, description)
       VALUES (?, ?)
       `
-    connection.query(query, value, (err, result) => {
+    connection.query(query, value, (err : any, result : any) => {
       if (err){
         return console.error(err);
       }
