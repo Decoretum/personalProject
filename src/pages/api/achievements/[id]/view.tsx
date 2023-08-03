@@ -5,7 +5,6 @@ export default function view(req:any, res:any){
     if (method === 'GET'){
         const { query } = req;
         const digit = Number(query.id);
-        console.log(digit);
 
         const value = [digit];
         const query1 = `SELECT * FROM Achievements 
@@ -13,7 +12,6 @@ export default function view(req:any, res:any){
  
         connection.query(query1, value, (err, result) => {
             if (err) return console.error(err);
-            console.log(result)
             return res.status(200).json({result : result})
         })
         

@@ -118,7 +118,7 @@ export default function Edit({props} : any){
                             Submit
                         </mui.Button>
 
-                        <Link href='/Achievements'>
+                        <Link href={`/Achievements/${path}/view`}>
                             <mui.Button style={{marginTop: '2vh', marginLeft: '2vw', backgroundColor: 'red'}} variant='contained'>
                                 Back 
                             </mui.Button>
