@@ -7,7 +7,7 @@ import React from "react";
 import axios from "axios";
 import { useRouter } from "next/router";
 
-export default function Info({props}){
+export default function Info({props} : any){
     const obj = props;
     const { push } = useRouter();
     const id = Number(obj.id);

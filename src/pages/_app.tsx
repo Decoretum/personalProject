@@ -9,7 +9,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Link from 'next/link'
 import * as React from 'react'
 
-export default function MyApp({ Component, pageProps }) {
+export default function MyApp({ Component, pageProps } : any) {
   let client = new QueryClient();
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);

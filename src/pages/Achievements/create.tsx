@@ -7,13 +7,18 @@ import { redirect } from "next/navigation";
 import { useRouter } from "next/router";
 import Link from "next/link";
 
+type objectAch = {
+    title : string,
+    Description : string
+}
+
 export default function Create({props} : any){
     const { register, handleSubmit } = useForm();
     const [ error, setError ] = useState(<></>)
     const [ open, setOpen ] = useState(true);
     const { push } = useRouter();
 
-    function errors(data : object){
+    function errors(data : objectAch){
         if (data.title === ''){
             setOpen(true);
             const a = (
