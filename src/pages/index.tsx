@@ -8,7 +8,7 @@ export default function Home() {
     <>
       <mui.Container className={styles.bg}>
         <mui.Typography variant='h4' style={{ marginLeft: '1vw' }}>
-          Gael Estrera's NextJS Portfolio Page
+          Gael Estrera&apos;s NextJS Portfolio Page
         </mui.Typography>
 
         <mui.Container style={{ marginTop: "6vh", fontFamily: "Roboto" }}>

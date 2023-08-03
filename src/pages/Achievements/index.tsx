@@ -44,7 +44,7 @@ export default function Achievements() {
     <Container className="background">
       <Grid container>
         <Grid item>
-          <h1> Gael's Achievements </h1>
+          <h1> Gael&apos;s Achievements </h1>
         </Grid>
         <Grid item style={{marginLeft: '2vw', alignItems: 'center'}}>
           <Link href='/Achievements/create'>

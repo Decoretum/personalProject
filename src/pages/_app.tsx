@@ -35,7 +35,7 @@ export default function MyApp({ Component, pageProps }) {
 
               <mui.Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
                 <Link href='/'>
-                  Gael's Portfolio Site
+                  Gael&apos;s Portfolio Site
                 </Link>
                 <mui.Button 
                   style={{marginLeft: '2vw', color: 'white'}}

@@ -28,7 +28,7 @@ export default function Intro() {
         </Avatar>
 
         <span style={{ marginLeft: "1vw", fontFamily: "Roboto" }}>
-          Gael Estrera's Fullstack Application
+          Gael Estrera&apos;s Fullstack Application
         </span>
       </Container>
 
