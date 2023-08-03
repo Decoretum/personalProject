@@ -9,6 +9,16 @@ import Link from "next/link";
 import { useQuery } from "@tanstack/react-query";
 import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
 
+type achObject = {
+    title : string,
+    Description : string,
+}
+
+type dValues = {
+    title : string,
+    Description : string,
+}
+
 export default function Edit({props} : any){
     const [ error, setError ] = useState(<></>)
     const [ open, setOpen ] = useState(true);
@@ -17,7 +27,7 @@ export default function Edit({props} : any){
     const router = useRouter();
     let path = Number(router.query.id);
 
-    function errors(data : object){
+    function errors(data : achObject){
         if (data.title === ''){
             setOpen(true);
             const a = (
@@ -70,9 +80,10 @@ export default function Edit({props} : any){
             return axios.get(`/api/achievements/${path}/view`)
             .then((res) => {
                 console.log(res.data.result[0]);
-                let defaultValues = {}
-                defaultValues.title = res.data.result[0].title;
-                defaultValues.Description = res.data.result[0].description;
+                let defaultValues : dValues = {
+                    title : res.data.result[0].title,
+                    Description : res.data.result[0].description,
+            }
                 reset({...defaultValues});
                 return res.data.result[0];
             })
