@@ -1,0 +1,23 @@
+.skill {
+    text-align: justify;
+    margin-top: 5vh;
+    margin-left: 2vw;
+    max-width: 60%;
+    min-width: 60%;
+    padding: 30px;
+    border-radius: 9px;
+    font-family: Roboto;
+    box-shadow: 0 0 10px rgba(42, 38, 38, 0.8);
+    background-color: rgb(162, 203, 248);
+  }
+  
+  .description {
+  margin: 10px;
+  margin-top: 2vh;
+  min-width: 50%;
+  max-width: 50%;
+  }
+  
+  .background {
+    padding: 15px;
+  }

@@ -8,6 +8,7 @@ import * as mui from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import Link from 'next/link'
 import * as React from 'react'
+import Head from "next/head";
 
 export default function MyApp({ Component, pageProps } : any) {
   let client = new QueryClient();
@@ -75,12 +76,23 @@ export default function MyApp({ Component, pageProps } : any) {
                   </mui.Typography>
                   </mui.MenuItem>
               </Link>
+
+              <Link href='/Skills'>
+                <mui.MenuItem>
+                  <mui.Typography>
+                    Skills
+                  </mui.Typography>
+                  </mui.MenuItem>
+              </Link>
             </mui.Menu>
 
             </mui.Toolbar>
           </mui.AppBar>
         </mui.Box>
         <meta name="viewport" content="initial-scale=1, width=device-width" />
+        <Head>
+          <title> PortFolio App </title>
+        </Head>
         <Component {...pageProps} />
       </div>
     </QueryClientProvider>

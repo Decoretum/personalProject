@@ -7,6 +7,7 @@ import {
   List,
   ListItem,
   ListItemText,
+  Typography,
 } from "@mui/material";
 import axios from "axios";
 import Link from "next/link";
@@ -31,13 +32,33 @@ export default function Achievements() {
   });
 
   if (achievements.isFetching) {
-    return <h1 style={{ marginLeft: '2vw' }}> Fetching data from MySQL </h1>;
+    return <h1 style={{ marginLeft: '2vw' }}> Loading Achievements Data </h1>;
   }
 
   if (achievements.isError) {
     return (
-      <h1 style={{ marginLeft: '2vw' }}> Fetching MySQL data failed </h1>
+      <h1 style={{ marginLeft: '2vw' }}> Fetching MySQL data for Achievements failed</h1>
     );
+  }
+
+  //If there are no achievements yet
+  if (achievements.data.length === 0){
+    return (
+      <Container className='background'>
+        <Typography variant='h4'> No achievements yet </Typography>
+        <Link href='/Achievements/create'>
+           <Button variant='contained' style={{marginTop: '5vh', padding: '10px'}}>
+           <Typography variant='h5'>
+            Add
+              <AddCircleIcon style={{marginLeft: '1vw', marginTop: '1vh'}} />
+            </Typography>
+          </Button>
+        </Link>
+
+        
+        
+      </Container>
+    )
   }
 
   return (
@@ -61,7 +82,7 @@ export default function Achievements() {
       <Container
         style={{
           marginTop: "5vh",
-          width: "50%",
+          width: "100%",
           borderRadius: "9px",
           boxShadow: "0 0 10px #ccc",
           backgroundColor: 'beige',

@@ -66,7 +66,7 @@ export default function Info({props} : any){
                     </Grid>
                 </Grid>
                 <Divider />
-                <List>
+                <List style={{lineHeight: '3', textAlign: 'justify'}}>
                     <ListItem> {obj.description} </ListItem>
                     {obj.duration !== null ? (
                         <ListItem style={{marginTop: '2vh'}}> No indicated duration </ListItem>
