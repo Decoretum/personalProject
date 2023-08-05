@@ -4,4 +4,7 @@
 <br>
 
 # Tech Stack
-<p> Typescript, NextJS (for both front-end and back-end/API) </p>
+<p> 
+  Typescript, NextJS (for both front-end and back-end/API), MySQL, and ReactJS packages such as (Material UI, React-Form-Hooks, ReactQuery, etc.).
+
+</p>
