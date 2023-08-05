@@ -7,27 +7,29 @@ import { redirect } from "next/navigation";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import { useQuery } from "@tanstack/react-query";
+import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
 
-type objectAch = {
+type achObject = {
     name : string,
     description : string,
     category: string,
 }
 
-export default function Create({props} : any){
-    const { register, handleSubmit } = useForm();
+
+export default function Edit({props} : any){
     const [ error, setError ] = useState(<></>)
-    const [ open, setOpen ] = useState(false);
+    const [ open, setOpen ] = useState(true);
     const [choice, setChoice] = useState('');
     const { push } = useRouter();
 
+    const router = useRouter();
+    let path = Number(router.query.id);
 
-    function errors(data : objectAch){
-        console.log(data)
+    function errors(data : achObject){
         if (data.name === ''){
             setOpen(true);
             const a = (
-            <div style={{marginTop: '1vh', position: 'fixed' }}>
+            <div style={{marginTop: '1vh', position: 'fixed', }}>
                 <mui.Alert onClose={() => {setOpen(false)}} severity="error" variant='filled'> 
                     <mui.AlertTitle> Validation Error: </mui.AlertTitle>
                     Fill out the title! 
@@ -43,7 +45,7 @@ export default function Create({props} : any){
             <div style={{marginTop: '1vh', position: 'fixed'}}>
                 <mui.Alert onClose={() => {setOpen(false)}} severity="error" variant='filled'> 
                     <mui.AlertTitle> Validation Error: </mui.AlertTitle>
-                    Fill out the choice! 
+                    Fill out the category! 
                 </mui.Alert>
             </div>
             )
@@ -69,83 +71,103 @@ export default function Create({props} : any){
     }
 
     function submitData(data:any){
-        data = {...data, category: choice}
         const result = errors(data);
+        data = {...data, category: choice}
         if (result === 'success'){
-            axios.post('/api/Skills', data)
+            axios.put(`/api/Skills/${path}/edit`, data)
             .then((res) => {
-                push('/Skills')
+                push(`/Skills/${path}/view`)
             })
         }
 
     }
 
-    const choices = useQuery({
-        queryKey: ['choices'],
+    const { register, handleSubmit, reset } = useForm();
+
+    //querying existing data
+    const queryData = useQuery({
+        enabled: !isNaN(path),
+        queryKey: ['data'],
         queryFn: async () => {
-            return axios.get(`/api/Skills`)
+            return axios.get(`/api/Skills/${path}/view`)
             .then((res) => {
-                console.log(res);
-                return res.data.choices;
+                console.log(res.data.result[0]);
+                let defaultValues : achObject = {
+                    name : res.data.result[0].name,
+                    description : res.data.result[0].description,
+                    category: res.data.result[0].category,
+            }
+                reset({...defaultValues});
+                setChoice(res.data.result[0].category)
+                return res.data.result[0];
             })
         }
     })
 
-    if (choices.isLoading && !choices.isSuccess){
-        return (
-            <Container>
-                <mui.Typography variant='h5'> Loading Data </mui.Typography>
-            </Container>
-        )
+    const iconData = useQuery({
+        queryKey: ['icons'],
+        queryFn: async () => {
+            return axios.get('/api/Skills/')
+            .then((res) => {
+                return res.data.choices
+            })
+        }
+    })
+
+    console.log(iconData.data)
+
+
+    if (queryData.isFetching){
+        return <h1 style={{marginLeft: '2vw'}}> Retrieving Achievement data </h1>
     }
 
-    if (choices.isError && !choices.isSuccess){
-        return (
-            <Container>
-                <mui.Typography variant='h5'> Failed to load data </mui.Typography>
-            </Container>
-        )
+    if (queryData.isError){
+        return <h1 style={{marginLeft: '2vw'}}> Failed to retrieve Achievement data </h1>
     }
 
-
+    if (queryData.isSuccess)
     return(
         <Container>
-            {open ? error : ''}
-            <h1 style={{margin: 'auto', width: '50%'}}> Add a Skill </h1>
+            <h1 style={{margin: 'auto', width: '50%'}}> 
+                Edit Achievement 
+                <EditOutlinedIcon style={{marginLeft: '2vw'}} />
+            </h1>
                 <Box style={{margin: 'auto', marginTop: '2vh', backgroundColor: 'white', borderRadius: '9px', padding: '15px', boxShadow: '0 0 10px #ccc', width: '50%'}}>
                     <form onSubmit={handleSubmit(submitData)}>
                         <mui.TextField 
                         label='Name' 
                         {...register('name')} 
+                        defaultValue={queryData.data.name}
                         id='name' 
                         style={{width: '30vw'}}
                         variant='standard' /> <br/>
-                        
-                        <mui.FormControl fullWidth>
-                            <mui.InputLabel id='choicelabel' style={{marginTop: '5vh'}}>Icon Choice</mui.InputLabel>
-                            <mui.Select
-                            variant='filled'
-                            style={{width: '20vw', marginTop: '5vh'}}
-                            labelId="choicelabel"
-                            value={choice}
-                            label='Choice'
-                            onChange={(e) => {setChoice(e.target.value)}}
-                            >
-                            {
-                                choices?.data?.map((choice : string) => {
-                                    return <mui.MenuItem key={choice} value={choice}> {choice.charAt(0).toUpperCase() + choice.slice(1)} </mui.MenuItem>
-                                })
-                            }
-                            </mui.Select>
-                        </mui.FormControl>
+
+                    <mui.FormControl fullWidth>
+                        <mui.InputLabel id='choicelabel' style={{marginTop: '5vh'}}>Icon Choice</mui.InputLabel>
+                        <mui.Select
+                        variant='filled'
+                        style={{width: '20vw', marginTop: '5vh'}}
+                        labelId="choicelabel"
+                        defaultValue={choice}
+                        label='Choice'
+                        onChange={(e) => {setChoice(e.target.value)}}
+                        >
+                        {
+                            iconData?.data?.map((choice : string) => {
+                                return <mui.MenuItem key={choice} value={choice}> {choice.charAt(0).toUpperCase() + choice.slice(1)} </mui.MenuItem>
+                            })
+                        }
+                        </mui.Select>
+                    </mui.FormControl>
 
                         <mui.TextField 
-                        label='Describe the skill' 
+                        label='description' 
                         multiline
                         fullWidth
                         rows={10}
                         style={{marginTop: '2vh'}}
                         {...register('description')} 
+                        defaultValue={queryData.data.description}
                         id='description' 
                         variant='filled' /> 
 
@@ -153,7 +175,7 @@ export default function Create({props} : any){
                             Submit
                         </mui.Button>
 
-                        <Link href='/Skills'>
+                        <Link href={`/Skills/${path}/view`}>
                             <mui.Button style={{marginTop: '2vh', marginLeft: '2vw', backgroundColor: 'red'}} variant='contained'>
                                 Back 
                             </mui.Button>
@@ -162,7 +184,7 @@ export default function Create({props} : any){
                     </form>
 
                 </Box>
-                
+                {open ? error : ''}
                 
         </Container>
     )

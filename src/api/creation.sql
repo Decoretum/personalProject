@@ -13,6 +13,8 @@ DESC AchSkills;
 INSERT INTO Achievements (title, description)
 VALUES ('Software Engineering Internship', 'I was able to perform multiple software engineering tasks and operations');
 
+INSERT INTO Skills (name, description)
+VALUES ('Software Development', 'A skill that comprises of disciplines, methodologies, and processes that facilitate the development of software for a particular purpose.');
 CREATE TABLE AchSkills (
 id int NOT NULL AUTO_INCREMENT,
 aID int,

@@ -16,7 +16,7 @@ import {
   import AddCircleIcon from '@mui/icons-material/AddCircle';
   import { Card } from "@/components/skills/card";
   
-  export default function Achievements() {
+  export default function Skills() {
     type format = {
       id: number;
       description: string;
@@ -61,7 +61,7 @@ import {
       )
     }
   
-    return (
+    if (skills.isSuccess) return (
       <Container className="background">
         <Grid container>
           <Grid item>

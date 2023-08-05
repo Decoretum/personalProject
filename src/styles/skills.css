@@ -1,14 +1,13 @@
 .skill {
-    text-align: justify;
-    margin-top: 5vh;
-    margin-left: 2vw;
-    max-width: 60%;
-    min-width: 60%;
+    margin: auto;
+    margin-top: 2vh;
+    max-width: 30%;
+    min-width: 30%;
     padding: 30px;
     border-radius: 9px;
     font-family: Roboto;
     box-shadow: 0 0 10px rgba(42, 38, 38, 0.8);
-    background-color: rgb(162, 203, 248);
+    background-color: rgb(237, 211, 95);
   }
   
   .description {

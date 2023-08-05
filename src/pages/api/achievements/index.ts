@@ -7,11 +7,11 @@ export default function achievements(req: any, res: any) {
       return res.status(200).json({ results: results });
     });
   } else if (method === 'POST'){
-    const {title, Description} = req.body;
-    let value = [title, Description];
+    const {title, description, duration} = req.body;
+    let value = [title, description, duration];
     let query = 
-      `INSERT INTO Achievements(title, description)
-      VALUES (?, ?)
+      `INSERT INTO Achievements(title, description, duration)
+      VALUES (?, ?, ?)
       `
     connection.query(query, value, (err : any, result : any) => {
       if (err){

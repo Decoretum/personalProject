@@ -47,11 +47,17 @@ export default function Achievements() {
       <Container className='background'>
         <Typography variant='h4'> No achievements yet </Typography>
         <Link href='/Achievements/create'>
-           <Button variant='contained' style={{marginTop: '5vh', padding: '10px'}}>
-           <Typography variant='h5'>
-            Add
-              <AddCircleIcon style={{marginLeft: '1vw', marginTop: '1vh'}} />
-            </Typography>
+           <Button variant='contained' style={{marginTop: '5vh', padding: '10px', display:'inline'}}>
+           <Grid container style={{display: 'inline-flex'}}>
+            <Grid item>
+              <Typography variant='body1' style={{marginTop: '1.5vh'}}>
+                {`A` + `Add`.slice(1).toLowerCase()}
+              </Typography>
+            </Grid>
+            <Grid item>
+              <AddCircleIcon style={{marginLeft: '1vw', marginTop: '1.5vh', display:'inline'}} />
+            </Grid>
+          </Grid>
           </Button>
         </Link>
 
