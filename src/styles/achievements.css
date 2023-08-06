@@ -21,3 +21,17 @@ max-width: 50%;
 .background {
   padding: 15px;
 }
+
+.modal{
+position: absolute;
+margin: auto;
+transform: translate(-50%, -50%);
+background-color: bisque;
+border-radius: 9px;
+padding: 30px;
+min-width: 50%;
+max-width: 50%;
+left: 50%;
+top: 50%;
+
+}

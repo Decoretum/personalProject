@@ -1,12 +1,13 @@
-import { Container, Box } from "@mui/material";
+import { Container, Box, Modal, Checkbox } from "@mui/material";
 import { useForm } from 'react-hook-form'
 import * as mui from '@mui/material'
-import { useState } from "react";
+import { SyntheticEvent, useState } from "react";
 import axios from "axios";
 import { redirect } from "next/navigation";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import { useQuery } from "@tanstack/react-query";
+import '@/styles/achievements.css'
 
 type objectAch = {
     title : string,
@@ -19,7 +20,8 @@ export default function Create({props} : any){
     const { register, handleSubmit } = useForm();
     const [ error, setError ] = useState(<></>)
     const [ open, setOpen ] = useState(true);
-    const [skill, setSkill] = useState('');
+    const [check, setCheck ] = useState(['']);
+    const [modal, setModal] = useState(false);
     const { push } = useRouter();
 
     function errors(data : objectAch){
@@ -81,7 +83,8 @@ export default function Create({props} : any){
     }
 
     function submitData(data:any){
-        data = {...data, skill:skill}
+        data = {...data, skill: check}
+        return console.log(data);
         const result = errors(data);
         if (result === 'success'){
             axios.post('/api/achievements', data)
@@ -99,6 +102,15 @@ export default function Create({props} : any){
             .then((res) => {return res.data.results})
         }
     })
+
+    //handling checkbox
+    function checkChange(value : string, isChecked : boolean){
+        if (isChecked){
+            setCheck([...check, value])
+        } else {
+            setCheck(check.filter((skill) => skill != value))
+        }
+    }
     return(
         <Container>
             {open ? error : ''}
@@ -115,30 +127,43 @@ export default function Create({props} : any){
                         {
                         skillData.isSuccess ? 
                         (
-                        <mui.Grid container>
-                            <mui.Grid item> 
-                                <mui.FormControl fullWidth>
-                                    <mui.InputLabel id='choicelabel' style={{marginTop: '5vh'}}>Skill</mui.InputLabel>
-                                    <mui.Select
-                                    variant='filled'
-                                    style={{width: '20vw', marginTop: '5vh'}}
-                                    labelId="choicelabel"
-                                    value={skill}
-                                    label='Skill'
-                                    onChange={(e) => {setSkill(e.target.value)}}
-                                    >
-                                    {
-                                        skillData?.data?.map((choice : string) => {
-                                            return <mui.MenuItem key={choice} value={choice.name}> {choice.name.charAt(0).toUpperCase() + choice.name.slice(1)} </mui.MenuItem>
-                                        })
-                                    }
-                                    </mui.Select>
-                                </mui.FormControl>
-                            </mui.Grid>
-                            <mui.Grid item>
+                            <>
+                                <mui.Button 
+                                variant='contained' 
+                                style={{marginTop: '2vh'}}
+                                onClick={() => {setModal(true)}}> 
+                                    Select Skills
+                                </mui.Button>
+
+                                <Modal
+                                open={modal === true}
+                                onClose={() => {setModal(false)}}
+                                >
+                                    <Box className='modal'>
+                                        {
+                                            skillData?.data?.map((skill : Object) => {
+                                                return (
+                                                    <>
+                                                        <mui.FormGroup>
+                                                            {
+                                                                check.includes(skill.name) ? 
+                                                                (
+                                                                    <mui.FormControlLabel onChange={(event : any) => {checkChange(event.target.value, event.target.checked)}} control={<Checkbox defaultChecked />} defaultValue={skill.name} value={skill.name} label={skill.name} /> 
+                                                                    ) : (
+                                                                        <mui.FormControlLabel onChange={(event : any) => {checkChange(event.target.value, event.target.checked)}} control={<Checkbox />} defaultValue={skill.name} value={skill.name} label={skill.name} /> 
+                                                                        )
+                                                            }
+                                                        </mui.FormGroup>
+                                                    </>
+                                                )
+                                            })
+                                        }
+                                    </Box>
                                     
-                            </mui.Grid>
-                        </mui.Grid>
+                                </Modal>
+                            </>
+
+
                         ) : skillData.isFetching ? (
                             <mui.Typography variant='body2' fontWeight='medium' style={{marginTop: '5vh'}}> Fetching Skills data </mui.Typography>
                         ) : (
