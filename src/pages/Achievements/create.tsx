@@ -16,6 +16,10 @@ type objectAch = {
     duration : string
 }
 
+type skillArch = {
+    name: string, 
+}
+
 export default function Create({props} : any){
     const { register, handleSubmit } = useForm();
     const [ error, setError ] = useState(<></>)
@@ -25,6 +29,12 @@ export default function Create({props} : any){
     const { push } = useRouter();
 
     function errors(data : objectAch){
+        let empty = true;
+        for (let i of data.skill){
+            if (i !== ''){
+                empty = false
+            }
+        }
         if (data.title === ''){
             setOpen(true);
             const a = (
@@ -38,7 +48,7 @@ export default function Create({props} : any){
       
             setError(a);
             return;
-        } else if (data.skill === ''){
+        } else if (empty === true){
             setOpen(true);
             const a = (
             <div style={{marginTop: '1vh', position: 'fixed'}}>
@@ -84,11 +94,12 @@ export default function Create({props} : any){
 
     function submitData(data:any){
         data = {...data, skill: check}
-        return console.log(data);
+        console.log(data);
         const result = errors(data);
         if (result === 'success'){
             axios.post('/api/achievements', data)
             .then((res) => {
+                console.log(res)
                 push('/Achievements')
             })
         }
@@ -141,7 +152,7 @@ export default function Create({props} : any){
                                 >
                                     <Box className='modal'>
                                         {
-                                            skillData?.data?.map((skill : Object) => {
+                                            skillData?.data?.map((skill : skillArch) => {
                                                 return (
                                                     <>
                                                         <mui.FormGroup>

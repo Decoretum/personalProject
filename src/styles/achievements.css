@@ -18,6 +18,17 @@ min-width: 50%;
 max-width: 50%;
 }
 
+.info {
+  display: inline-flex;
+  width: fit-content;
+  border: solid 0.78px; 
+  text-align: center;
+  padding: 7px; 
+  box-shadow: 0 0 10px #001C;
+  border-radius: 20px;
+  background-color: burlywood;
+}
+
 .background {
   padding: 15px;
 }
@@ -26,7 +37,7 @@ max-width: 50%;
 position: absolute;
 margin: auto;
 transform: translate(-50%, -50%);
-background-color: bisque;
+background-color: rgb(237, 229, 219);
 border-radius: 9px;
 padding: 30px;
 min-width: 50%;

@@ -93,6 +93,7 @@ export default function Achievements() {
           boxShadow: "0 0 10px #ccc",
           backgroundColor: 'beige',
           padding: "10px",
+          textOverflow: 'ellipsis'
         }}
       >
         <Card props={achievements} />

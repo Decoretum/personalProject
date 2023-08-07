@@ -9,9 +9,19 @@ import Link from "next/link";
 export default function View(){
     const router = useRouter();
     let path = Number(router.query.id);
-    //let digit = Number(router.pathname?.replace(/\D/g, '')) ;
+    
+    const skillsQuery = useQuery({
+        enabled: !isNaN(path),
+        queryKey: ['skills'],
+        queryFn: async () => {
+            return axios.get(`/api/AchSkills/${path}/view`)
+            .then((res) => {
+                console.log(res.data)
+                return res.data})
+        }
+    })
 
-    //client.invalidateQueries(['ach']);
+
     const aQuery = useQuery({
         enabled: !isNaN(path),
         queryKey: ['ach'],
@@ -19,7 +29,6 @@ export default function View(){
             return axios.get(`/api/achievements/${path}/view`)
             .then(
                 (res) => {
-                    console.log(res.data.result[0])
                     return res.data.result[0];
                 }
             )
@@ -35,11 +44,17 @@ export default function View(){
         return <h1 style={{marginLeft: '2vw'}}> Failed to retrieve Achievement data </h1>
     }
 
-    if (aQuery.isSuccess) return (
+    
+
+    if (aQuery.isSuccess) 
+    {
+    const wholeData = {achievement : aQuery.data, skills : skillsQuery.data}
+    console.log(wholeData)
+    return (
         <>    
             <Grid container style={{}}>
-                <Grid item>
-                    <Info props={aQuery.data} />
+                <Grid item style={{}}>
+                    <Info props={wholeData} />
                 </Grid>
 
                 <Grid item>
@@ -50,5 +65,5 @@ export default function View(){
                 
             </Grid>
         </>
-    )
+    )}
 }
