@@ -7,13 +7,6 @@ export default async function view(req:any, res:any){
         const digit = Number(query.id);
 
         const value = [digit];
-        const query1 = `SELECT * FROM AchSkills 
-        WHERE aID= ?`
-
-        //array/hashmap of all shit
-        //goal is to attach name to JSON result
-        let dataMap = new Map()
-        let i = 0;
         
         //Returns Associative entity rows with corresponding name
         // connection.query(query1, value, (err : any, result : any) => {
@@ -33,7 +26,7 @@ export default async function view(req:any, res:any){
         //     }
              
         // })
-        let q = `SELECT Skills.name, Skills.category
+        let q = `SELECT AchSkills.id as AchID, Skills.id, Skills.name, Skills.category
         FROM Skills, AchSkills
         WHERE Skills.id = AchSkills.sID
         AND AchSkills.aID = ?

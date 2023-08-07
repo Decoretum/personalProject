@@ -85,8 +85,8 @@ export default function Info({props} : any){
                 <List style={{lineHeight: '3', textAlign: 'justify'}}>
                     <ListItem> {obj.description} </ListItem> 
                     <ListItem> 
-                        <List style={{display: 'inline-flex'}}>
                         <Typography variant='h6'> Skills </Typography>
+                        <List style={{display: 'inline-flex'}}>
                         
                         {
                             skills?.map((skill : skillArch) => {
@@ -94,12 +94,12 @@ export default function Info({props} : any){
                                 return(
                                     <ListItem key={skill.name} style={{marginTop: '1vh'}}>
                                         <Grid container className='info'>
-                                            <Grid item style={{ display: 'inline-block', margin: 'auto'}}>
+                                            <Grid item style={{ display: 'inline', margin: 'auto'}}>
                                                 <Typography variant='body1' key={skill.name}> 
                                                     {skill.name}         
                                                 </Typography>
                                             </Grid>
-                                            <Grid item style={{ display: 'inline-block', margin: 'auto', marginTop: '1.7vh'}}>
+                                            <Grid item style={{ display: 'inline', margin: 'auto', marginTop: '1.7vh'}}>
                                             {
                                                 skill.category === 'tech'
                                                 ? (

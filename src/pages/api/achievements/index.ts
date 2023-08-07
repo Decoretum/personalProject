@@ -15,15 +15,14 @@ export default function achievements(req: any, res: any) {
     //Associative Entity Creation
     let value = [title, description, duration]
     let query = 
-      `INSERT INTO Achievements(title, description, duration)
-      VALUES (?, ?, ?)
+      `
+        INSERT INTO Achievements(title, description, Duration)
+        VALUES (?, ?, ?)
       ` 
     connection.query(query, value, (err : any, result : any) => {
       let achID = result.insertId;
-      if (err){
-        return console.error(err);
-      }
-
+      if (err) return console.error(err);
+      
       for (let i of skillArray){
 
         let skillName = [i]
