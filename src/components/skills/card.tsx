@@ -17,21 +17,21 @@ import {
   import ArticleOutlinedIcon from '@mui/icons-material/ArticleOutlined';
   import RecordVoiceOverOutlinedIcon from '@mui/icons-material/RecordVoiceOverOutlined';
   import SportsEsportsOutlinedIcon from '@mui/icons-material/SportsEsportsOutlined';
-  import Link from "next/link";
+  import { useRouter } from "next/router";
   
   export function Card({ props }: any) {
     console.log(props);
+    const router = useRouter()
     return (
       <>
         {props?.data?.map((element: any) => {
           return (
-            <Box key={element.id} className="skill" style={{marginTop: '5vh'}}>
-              <Grid container style={{margin: 'auto', width: '50%' }} spacing={2}>
-                <Link href={`Skills/${element.id}/view`} style={{display: 'inline-flex'}}>
-                  <Grid item style={{display: 'inline'}}>
-                    <Typography variant='h4'> {element.name} </Typography>
+            <Box className="skill" onClick={() => {router.push(`Skills/${element.id}/view`)}} key={element.id} style={{marginTop: '5vh'}}>
+              <Grid container style={{display: 'inline-block', textAlign: 'center', wordWrap: 'break-word', margin: 'auto', width: '90%'}} spacing={2}>
+                  <Grid item style={{display: 'inline' }}>
+                    <Typography variant='h4'> {element.name}</Typography>
                   </Grid>
-                  <Grid item style={{display: 'inline', marginLeft: '2vw'}}>
+                  <Grid item style={{display: 'inline'}}>
                   {
                       element.category === 'tech'
                       ? (
@@ -51,7 +51,6 @@ import {
                       )
                     }   
                   </Grid>
-                </Link>
               </Grid>
             </Box>
           );

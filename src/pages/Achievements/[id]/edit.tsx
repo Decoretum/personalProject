@@ -17,6 +17,10 @@ type achObject = {
     skills: Array<string>
 }
 
+type skillsQuery = {
+    
+}
+
 type dValues = {
     title : string,
     Description : string,
@@ -53,10 +57,10 @@ export default function Edit({props} : any){
 
     }
 
-    function checker(check : Array<[]>, skill : object ){
+    function checker(check : Array<any>, skill : skillArch ){
         let verdict = false;
         for (let i of check){
-            if (i[0] === skill.id && i[1] === skill.name){
+            if (i[1] === skill.name){
                 return true;
             }
         }
@@ -138,6 +142,7 @@ export default function Edit({props} : any){
         if (result === 'success'){
             axios.put(`/api/achievements/${path}/edit`, data)
             .then((res) => {
+                console.log(res)
                 push(`/Achievements/${path}/view`)
             })
         }
@@ -204,7 +209,7 @@ export default function Edit({props} : any){
         }
     })
 
-
+    console.log(check)
 
     if (queryData.isFetching){
         return <h1 style={{marginLeft: '2vw'}}> Retrieving Achievement data </h1>

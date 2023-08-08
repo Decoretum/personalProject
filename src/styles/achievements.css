@@ -8,7 +8,8 @@
   border-radius: 9px;
   font-family: Roboto;
   box-shadow: 0 0 10px rgba(42, 38, 38, 0.8);
-  background-color: rgb(162, 203, 248);
+  background-color: #ee6c4d;
+  border: solid 0.3px;
 }
 
 .description {
@@ -27,6 +28,10 @@ max-width: 50%;
   box-shadow: 0 0 10px #001C;
   border-radius: 20px;
   background-color: burlywood;
+}
+
+.info :hover{
+  cursor: pointer;
 }
 
 .background {

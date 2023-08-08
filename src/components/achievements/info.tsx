@@ -12,7 +12,7 @@ import Link from "next/link";
 import React from "react";
 import axios from "axios";
 import { useRouter } from "next/router";
-import '@/styles/achievements.css'
+import '@/styles/skills.css'
 
 type skillArch = {
     name : string,
@@ -93,7 +93,7 @@ export default function Info({props} : any){
                                 
                                 return(
                                     <ListItem key={skill.name} style={{marginTop: '1vh'}}>
-                                        <Grid container className='info'>
+                                        <Grid container className='info' onClick={() => {push(`/Skills/${skill.id}/view`)}}>
                                             <Grid item style={{ display: 'inline', margin: 'auto'}}>
                                                 <Typography variant='body1' key={skill.name}> 
                                                     {skill.name}         

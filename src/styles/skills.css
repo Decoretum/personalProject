@@ -3,11 +3,26 @@
     margin-top: 2vh;
     max-width: 30%;
     min-width: 30%;
-    padding: 30px;
-    border-radius: 9px;
+    padding: 10px;
+    border-radius: 100px;
     font-family: Roboto;
     box-shadow: 0 0 10px rgba(42, 38, 38, 0.8);
     background-color: rgb(237, 211, 95);
+  }
+
+  .skill:hover{
+    cursor: pointer;
+  }
+
+  .info {
+    display: inline-flex;
+    width: fit-content;
+    border: solid 0.78px; 
+    text-align: center;
+    padding: 7px; 
+    box-shadow: 0 0 10px #001C;
+    border-radius: 20px;
+    background-color: burlywood;
   }
   
   .description {
