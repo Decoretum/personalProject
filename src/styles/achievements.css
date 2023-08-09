@@ -1,5 +1,4 @@
 .achievement {
-  text-align: justify;
   margin-top: 5vh;
   margin-left: 2vw;
   max-width: 90%;
@@ -7,9 +6,8 @@
   padding: 30px;
   border-radius: 9px;
   font-family: Roboto;
-  box-shadow: 0 0 10px rgba(42, 38, 38, 0.8);
+  box-shadow: 0 0 6px rgba(42, 38, 38, 0.8);
   background-color: #ee6c4d;
-  border: solid 0.3px;
 }
 
 .description {

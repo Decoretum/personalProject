@@ -53,6 +53,14 @@ export default function MyApp({ Component, pageProps } : any) {
               keepMounted 
               anchorEl={anchorEl}
               onClose={() => {setAnchorEl(null)}}>
+                <Link href='/Intro'>
+                  <mui.MenuItem>
+                    <mui.Typography>
+                      Overview
+                    </mui.Typography>
+                  </mui.MenuItem>
+                </Link>
+
                 <Link href='/About'>
                   <mui.MenuItem>
                       <mui.Typography>
@@ -65,14 +73,6 @@ export default function MyApp({ Component, pageProps } : any) {
                 <mui.MenuItem>
                   <mui.Typography>
                     Achievements
-                  </mui.Typography>
-                  </mui.MenuItem>
-              </Link>
-
-              <Link href='/Intro'>
-                <mui.MenuItem>
-                  <mui.Typography>
-                    Overview
                   </mui.Typography>
                   </mui.MenuItem>
               </Link>

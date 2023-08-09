@@ -82,7 +82,7 @@ import {
         <Container
           style={{
             marginTop: "5vh",
-            width: "100%",
+            width: "50%",
             borderRadius: "9px",
             boxShadow: "0 0 10px #ccc",
             backgroundColor: 'beige',
